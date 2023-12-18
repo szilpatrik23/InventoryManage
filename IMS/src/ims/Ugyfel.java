@@ -82,6 +82,11 @@ public class Ugyfel extends javax.swing.JPanel {
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/Update_16.png"))); // NOI18N
         jButton3.setText("Szerkeszt");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/Delete_16.png"))); // NOI18N
@@ -234,7 +239,9 @@ public class Ugyfel extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        
+       
+        
         
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -257,6 +264,23 @@ public class Ugyfel extends javax.swing.JPanel {
         }
         
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+            String name = ugyfelNevTxt.getText();
+            String telszam = ugyfelTelTxt.getText();
+            String cid= cidTxt.getText();
+            
+            try {
+                Statement s = Database.mycon().createStatement();
+                s.executeUpdate("UPDATE ugyfel SET ugyfel_nev='"+name+"',ugyfel_telefonszam='"+telszam+"' WHERE cid='"+cid+"'");
+                JOptionPane.showMessageDialog(null, "Sikeres szerkesztés!");
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
