@@ -22,6 +22,9 @@ public class Ugyfel extends javax.swing.JPanel {
      */
     public Ugyfel() {
         initComponents();
+        cidTxt.setNextFocusableComponent(ugyfelNevTxt);
+        ugyfelNevTxt.setNextFocusableComponent(ugyfelTelTxt);
+        ugyfelTelTxt.setNextFocusableComponent(ugyfel_tabla_keres);
         tb_load();
     }
 
@@ -78,10 +81,8 @@ public class Ugyfel extends javax.swing.JPanel {
         jLabel2.setText("Tel. szám:");
 
         ugyfelNevTxt.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        ugyfelNevTxt.setText("0");
 
         ugyfelTelTxt.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        ugyfelTelTxt.setText("0");
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/Save_16.png"))); // NOI18N
@@ -190,7 +191,6 @@ public class Ugyfel extends javax.swing.JPanel {
         jLabel3.setText("ID keresés:");
 
         cidTxt.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        cidTxt.setText("0");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("Ügyfél adatok");
@@ -222,7 +222,6 @@ public class Ugyfel extends javax.swing.JPanel {
         );
 
         ugyfel_tabla_keres.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        ugyfel_tabla_keres.setText("0");
         ugyfel_tabla_keres.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 ugyfel_tabla_keresKeyReleased(evt);
@@ -241,16 +240,15 @@ public class Ugyfel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
                         .addGap(12, 12, 12))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(203, 203, 203)
                         .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ugyfel_tabla_keres, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(ugyfel_tabla_keres, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
