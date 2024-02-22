@@ -222,6 +222,11 @@ public class Ugyfel extends javax.swing.JPanel {
         );
 
         ugyfel_tabla_keres.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        ugyfel_tabla_keres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ugyfel_tabla_keresActionPerformed(evt);
+            }
+        });
         ugyfel_tabla_keres.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 ugyfel_tabla_keresKeyReleased(evt);
@@ -388,6 +393,10 @@ public class Ugyfel extends javax.swing.JPanel {
        
         
     }//GEN-LAST:event_ugyfel_tabla_keresKeyReleased
+
+    private void ugyfel_tabla_keresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ugyfel_tabla_keresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ugyfel_tabla_keresActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
