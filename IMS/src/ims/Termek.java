@@ -411,8 +411,8 @@ public class Termek extends javax.swing.JPanel {
         String name = jTable2.getValueAt(r, 1).toString();
         String barcode = jTable2.getValueAt(r, 2).toString();
         String price = jTable2.getValueAt(r, 3).toString();
-        String qty = jTable2.getValueAt(r, 3).toString();
-        String bid = jTable2.getValueAt(r, 3).toString();
+        String qty = jTable2.getValueAt(r, 4).toString();
+        String bid = jTable2.getValueAt(r, 5).toString();
         
         t_src.setText(id);
         t_nev.setText(name);
