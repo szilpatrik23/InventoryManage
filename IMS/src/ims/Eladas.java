@@ -31,6 +31,11 @@ public class Eladas extends javax.swing.JPanel {
             lbl_teljesar.setText(String.valueOf(total));
             
     }
+    
+    
+    public void teljes_kosar(){
+        int sorokszama = jTable1.getRowCount();
+    }
 
     public void adat_betolt(){
         // Ügyfél betöltése
@@ -171,6 +176,9 @@ public class Eladas extends javax.swing.JPanel {
         termek_gty.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 termek_gtyKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                termek_gtyKeyReleased(evt);
             }
         });
 
@@ -499,6 +507,10 @@ public class Eladas extends javax.swing.JPanel {
         DefaultTableModel dt = (DefaultTableModel) jTable1.getModel();
         dt.setRowCount(0);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void termek_gtyKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_termek_gtyKeyReleased
+        teljes_ar_kalkulator();
+    }//GEN-LAST:event_termek_gtyKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
