@@ -206,7 +206,8 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton3ActionPerformed
 
     private void jToggleButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton5ActionPerformed
-      
+       Eladas ela = new Eladas();
+       jp.jPanelLoader(panel_load, ela);
     }//GEN-LAST:event_jToggleButton5ActionPerformed
 
     private void jToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton4ActionPerformed
