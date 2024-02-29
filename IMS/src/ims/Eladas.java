@@ -30,11 +30,29 @@ public class Eladas extends javax.swing.JPanel {
             
             lbl_teljesar.setText(String.valueOf(total));
             
+            
+    }
+    
+    public void tot(){
+         Double paid = Double.valueOf(fizetendo_osszeg.getText());
+        Double tot = Double.valueOf(teljes_osszegzes.getText());
+        Double due = paid - tot;
+        txt_egyenleg.setText(String.valueOf(due));
     }
     
     
     public void teljes_kosar(){
+        
         int sorokszama = jTable1.getRowCount();
+        
+        double teljes = 0;
+        
+        for (int i = 0; i < sorokszama; i++) 
+        {
+            double value = Double.valueOf(jTable1.getValueAt(i, 5).toString());
+            teljes += value;
+        }
+        teljes_osszegzes.setText(Double.toString(teljes));
     }
 
     public void adat_betolt(){
@@ -105,13 +123,13 @@ public class Eladas extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
-        jTextField2 = new javax.swing.JTextField();
+        fizetendo_osszeg = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        teljes_osszegzes = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        txt_egyenleg = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -321,8 +339,13 @@ public class Eladas extends javax.swing.JPanel {
 
         jPanel6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTextField2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jTextField2.setText("0");
+        fizetendo_osszeg.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        fizetendo_osszeg.setText("0");
+        fizetendo_osszeg.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                fizetendo_osszegKeyReleased(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel8.setText("Fizetendő összeg:");
@@ -332,16 +355,16 @@ public class Eladas extends javax.swing.JPanel {
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel9.setText("Teljes összeg:");
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel10.setText("00.00");
-        jLabel10.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        teljes_osszegzes.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        teljes_osszegzes.setText("00.00");
+        teljes_osszegzes.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel11.setText("Egyenleg:");
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel12.setText("00.00");
-        jLabel12.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        txt_egyenleg.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txt_egyenleg.setText("00.00");
+        txt_egyenleg.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -353,11 +376,11 @@ public class Eladas extends javax.swing.JPanel {
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(teljes_osszegzes, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(txt_egyenleg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
@@ -366,11 +389,11 @@ public class Eladas extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jLabel10))
+                    .addComponent(teljes_osszegzes))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(jLabel12))
+                    .addComponent(txt_egyenleg))
                 .addContainerGap(43, Short.MAX_VALUE))
         );
 
@@ -382,7 +405,7 @@ public class Eladas extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fizetendo_osszeg, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -394,7 +417,7 @@ public class Eladas extends javax.swing.JPanel {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel8)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(fizetendo_osszeg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -489,6 +512,8 @@ public class Eladas extends javax.swing.JPanel {
         v.add(lbl_teljesar.getText());
         
         dt.addRow(v);
+        teljes_kosar();
+        tot();
     }//GEN-LAST:event_btn_kosarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -500,30 +525,37 @@ public class Eladas extends javax.swing.JPanel {
         } catch (Exception e) {
         }
         
-        
+        teljes_kosar();
+        tot();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         DefaultTableModel dt = (DefaultTableModel) jTable1.getModel();
         dt.setRowCount(0);
+        teljes_kosar();
+        tot();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void termek_gtyKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_termek_gtyKeyReleased
         teljes_ar_kalkulator();
     }//GEN-LAST:event_termek_gtyKeyReleased
 
+    private void fizetendo_osszegKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fizetendo_osszegKeyReleased
+        tot();
+       
+    }//GEN-LAST:event_fizetendo_osszegKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_kosar;
     private javax.swing.JComboBox<String> com_termek;
     private javax.swing.JComboBox<String> com_ugyfel;
+    private javax.swing.JTextField fizetendo_osszeg;
     private javax.swing.JLabel inid;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -541,10 +573,11 @@ public class Eladas extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lbl_ar;
     private javax.swing.JLabel lbl_teljesar;
     private javax.swing.JLabel lbl_vonalkod;
+    private javax.swing.JLabel teljes_osszegzes;
     private javax.swing.JTextField termek_gty;
+    private javax.swing.JLabel txt_egyenleg;
     // End of variables declaration//GEN-END:variables
 }
