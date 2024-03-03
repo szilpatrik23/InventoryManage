@@ -367,7 +367,7 @@ public class Eladas extends javax.swing.JPanel {
         });
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel8.setText("Fizetendő összeg:");
+        jLabel8.setText("Fizetett összeg:");
 
         jPanel7.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -430,7 +430,7 @@ public class Eladas extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fizetendo_osszeg, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fizetendo_osszeg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -455,6 +455,11 @@ public class Eladas extends javax.swing.JPanel {
 
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton4.setText("Fizetés & Nyomtatás");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -575,6 +580,50 @@ public class Eladas extends javax.swing.JPanel {
         tot();
        
     }//GEN-LAST:event_fizetendo_osszegKeyReleased
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // `kosarid`, `INID`, `Termek_nev`, `Vonalkod`, `Qty`, `Egyseg_Ar`, `Teljes_Ar`
+        
+        try {
+            
+            DefaultTableModel dt = (DefaultTableModel) jTable1.getModel();
+            int sorokszama= dt.getRowCount();
+            
+            for (int i = 0; i < sorokszama; i++) {
+                
+                String inid = dt.getValueAt(i, 0).toString();
+                String t_nev = dt.getValueAt(i, 1).toString();
+                String v_kod = dt.getValueAt(i, 2).toString();
+                String qty = dt.getValueAt(i, 3).toString();
+                String e_ar = dt.getValueAt(i, 4).toString();
+                String t_ar = dt.getValueAt(i, 5).toString();
+                
+                // Kosár Db
+                Statement s = Database.mycon().createStatement();
+                s.executeUpdate("INSERT INTO kosar (INID, Termek_nev, Vonalkod, Qty, Egyseg_Ar, Teljes_Ar) VALUES('"+inid+"','"+t_nev+"','"+v_kod+"','"+qty+"','"+e_ar+"','"+t_ar+"' )");   
+            
+            }
+            JOptionPane.showMessageDialog(null, "Sikeres mentés!");
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+        
+        try {
+            
+                // Eladás DB
+            //`saleid`, `INID`, `Cid`, `Customer_Name`, `Total_Qty`, `Total_Bill`, `Status`, `Balance`
+            
+            Statement ss = Database.mycon().createStatement();
+            ss.executeUpdate("INSERT INTO eladasok (INID, Cid, Customer_Name, Total_Qty, Total_Bill, Status, Balance) VALUES ('"+inid+"','"+inid+"','"+inid+"','"+inid+"','"+inid+"','"+inid+"','"+inid+"')");
+            
+            
+            
+        } catch (Exception e) {
+        }
+        
+    }//GEN-LAST:event_jButton4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
